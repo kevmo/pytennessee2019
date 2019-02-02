@@ -20,9 +20,15 @@ To try the PySimpleGUI app you can invoke it like this:
 $ pipenv run start
 ```
 
+![Example starting screen](./images/demo1.png)
+
+![Example table](./images/demo2.png)
+
 
 Home Assistant Display
 -----
+
+![Example of the Flex Table Card](./compose/demo.png)
 
 Awesome resources I used to build the card in the HA Lovelace UI:
     - [Flex Table Card](https://github.com/custom-cards/flex-table-card)
