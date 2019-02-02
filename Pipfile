@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aiohttp = "*"
+pysimplegui = "*"
+async-timeout = "*"
+
+[dev-packages]
+pylint = "*"
+bandit = "*"
+
+[requires]
+python_version = "3.7"
+
+[scripts]
+start = "python whispers.py"

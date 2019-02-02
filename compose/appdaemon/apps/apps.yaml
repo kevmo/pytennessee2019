@@ -1,0 +1,10 @@
+# auth is the hash from /etc/pihole/setupVars.conf
+# In the demo here, that's the password pihole
+whispers:
+  module: pytennessee
+  class: PyTennessee
+  tls: False
+  verify_tls: False
+  schema: http
+  host: pihole
+  auth: 5536c470d038c11793b535e8c1176817c001d6f20a4704fa7908939be82e2922

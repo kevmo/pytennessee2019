@@ -1,0 +1,69 @@
+{
+    "data": {
+        "credentials": [
+            {
+                "auth_provider_id": null,
+                "auth_provider_type": "homeassistant",
+                "data": {
+                    "username": "jeremy"
+                },
+                "id": "b173c94080a941f4a1d942da6ac3bc7f",
+                "user_id": "abd50dfeee6b4fe7a3aa19fd236ce1ba"
+            }
+        ],
+        "groups": [
+            {
+                "id": "system-admin",
+                "name": "Administrators"
+            },
+            {
+                "id": "system-read-only",
+                "name": "Read Only"
+            }
+        ],
+        "refresh_tokens": [
+            {
+                "access_token_expiration": 1800.0,
+                "client_icon": null,
+                "client_id": "http://localhost:8123/",
+                "client_name": null,
+                "created_at": "2019-02-01T22:57:43.681298+00:00",
+                "id": "b510d433b0d34d37a208a574a14af88f",
+                "jwt_key": "0e05c487f4f525a1c50d2622d0e249172510b52769caad013f73c4be4731440ca990e21f0f5137e5aedf52a30a32120601162e372c0f16dc41f111d76988e662",
+                "last_used_at": "2019-02-02T03:31:37.884975+00:00",
+                "last_used_ip": "192.168.139.1",
+                "token": "f188ffcb79da6198f6181af476daaee594293d56b25ba14ddc34124bbe2dcd264704d4e937d1ae114dae1ede774f1ce5418b24f851ab5c9d4b6f907fde99285d",
+                "token_type": "normal",
+                "user_id": "abd50dfeee6b4fe7a3aa19fd236ce1ba"
+            },
+            {
+                "access_token_expiration": 315360000.0,
+                "client_icon": null,
+                "client_id": null,
+                "client_name": "pytennessee",
+                "created_at": "2019-02-01T22:57:58.978605+00:00",
+                "id": "5c184b01bd17461eb02477d764871afd",
+                "jwt_key": "8fc80b35c7c4457531fca0e8f335ea7513262ed1e519109b1b752fde53962e63a718de7d4996d6d06a5172ee49345dcca442d60bdbf1ccddf3bcdfa2f090592c",
+                "last_used_at": "2019-02-01T22:57:58.978729+00:00",
+                "last_used_ip": null,
+                "token": "97eb13e2d8fcdf54c1e41efde8440bb4a7e7fa180a973ff37ebba6dbfb80eb7edc6585588e938934402448533db4d941b990223a0df2cbd57257062988126e58",
+                "token_type": "long_lived_access_token",
+                "user_id": "abd50dfeee6b4fe7a3aa19fd236ce1ba"
+            }
+        ],
+        "users": [
+            {
+                "group_ids": [
+                    "system-admin"
+                ],
+                "id": "abd50dfeee6b4fe7a3aa19fd236ce1ba",
+                "is_active": true,
+                "is_owner": true,
+                "name": "Jeremy",
+                "system_generated": false
+            }
+        ]
+    },
+    "key": "auth",
+    "version": 1
+}

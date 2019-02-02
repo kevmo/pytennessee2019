@@ -1,0 +1,21 @@
+resources:
+  - url: /local/flex-table-card.js
+    type: js
+
+title: PyTennessee 2019
+views:
+  - icon: mdi:home-assistant
+    id: demo
+    title: PyTennesee 2019
+    cards:
+      - type: custom:flex-table-card
+        title: Whispers
+        entities:
+          include:
+            - variable.whispers
+
+        columns:
+          - name: Hostname
+            attr_as_list: hostnames
+          - name: Quantity
+            attr_as_list: counts

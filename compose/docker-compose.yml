@@ -1,0 +1,85 @@
+version: '3.7'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant
+    expose:
+      - 8123/tcp
+    ports:
+      - "8123:8123/tcp"
+    volumes:
+      - ./homeassistant/:/config:rw
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    networks:
+      nunyabusiness:
+        ipv4_address: 192.168.139.50
+
+  appdaemon:
+    container_name: appdaemon
+    image: acockburn/appdaemon:latest
+    # Exposing 5050 really as a health check for appdaemon.  This demo isn't using any of its dashboards
+    ports:
+      - "5050:5050/tcp"
+    volumes:
+      - ./appdaemon:/conf:rw
+      - ../whispers:/usr/local/lib/python3.6/site-packages/whispers:ro
+    #environment:
+      #EXTRA_CMD: "-D DEBUG"
+    restart: always
+    links:
+      - pihole
+      - homeassistant
+    networks:
+      nunyabusiness:
+        ipv4_address: 192.168.139.25
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    ports:
+      # In my demo I'm running an unbound server on my host OS with a default forwarder set up for 127.0.0.1@5053
+      # I use unbound on my host so that NetworkManager dispatcher can add forwarders for zones I'd access when on
+      # a VPN and to remove those forwarders when I log off of the VPN.  Everything else would be sent to pi-hole
+      # and cloudflared for filtering and DNS-over-HTTPS.  You can use pi-hole directly by binding to 53 on your host
+      - "5053:53/udp"
+      - "80:80/tcp"
+    expose:
+      - 80/tcp
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./pihole:/etc/pihole:rw
+    environment:
+      ServerIP: 192.168.139.80
+      WEBPASSWORD: pihole
+      DNS1: 192.168.139.53
+      DNS2: 192.168.139.53
+    restart: always
+    networks:
+      nunyabusiness:
+        ipv4_address: 192.168.139.80
+    links:
+      - cloudflare
+
+  cloudflare:
+    container_name: cloudflared
+    restart: always
+    expose:
+      - 53/udp
+    build:
+      context: ./cloudflared
+    image: cloudflared
+    networks:
+      nunyabusiness:
+        ipv4_address: 192.168.139.53
+
+## Adding custom network to provide cloudflared and pihole static IPs
+networks:
+  nunyabusiness:
+    ipam:
+     config:
+       - subnet: 192.168.139.0/24
